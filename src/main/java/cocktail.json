@@ -1,0 +1,23 @@
+[{
+  "id": 1,
+  "ingredients": [
+    "sucre de canne",
+    "citrons",
+    "menthe",
+    "limonade",
+    "rhum"
+  ],
+  "nom": "Mojito",
+  "difficulte": 2
+},
+
+{
+  "id": 2,
+  "ingredients": [
+    "limonade",
+    "vin blanc",
+    "aperol",
+  ],
+  "nom": "Aperol Spritz",
+  "difficulte": 2
+}]
