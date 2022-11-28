@@ -36,21 +36,22 @@ public class CocktailController {
 
 
     @PostMapping
-    public Cocktail save(@RequestBody Cocktail cocktail ){
+    public List<Cocktail> save(@RequestBody Cocktail cocktail ){
         return dao.save(cocktail);
     }
 
+    @PostMapping("/create")
+    public List<Cocktail> create(){return dao.create();}
 
     @DeleteMapping("{id}")
-    public String delete(@PathVariable int id ){
+    public List<Cocktail> delete(@PathVariable int id ){
         return dao.delete(id);
     }
 
-    @PutMapping
-    public Cocktail updateProduct(@RequestBody Cocktail cocktail) {
-        return dao.update(cocktail);
+    @PutMapping("{id}")
+    public Cocktail updateProduct(@PathVariable int id,@RequestBody Cocktail cocktail) {
+        return dao.update(id, cocktail);
     }
-
 
 
 }

@@ -7,18 +7,19 @@ import java.util.List;
 public interface ICocktailDAO {
 
 
-
-
-
     List<Cocktail> findAll();
 
     Cocktail findById(int id);
 
-    Cocktail save(Cocktail cocktail);
+    List<Cocktail> save(Cocktail cocktail);
 
-    String delete(int id);
+    List<Cocktail> delete(int id);
 
-    Cocktail update(Cocktail cocktail);
+    Cocktail update(int id, Cocktail cocktail);
 
     List<Cocktail> findByName(String nom);
+
+    List<Cocktail> create();
+
+
 }

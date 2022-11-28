@@ -29,34 +29,35 @@ public class CocktailDAO implements ICocktailDAO {
     }
 
 
-
-    public Cocktail save(Cocktail cocktail){
+    public List<Cocktail> save(Cocktail cocktail){
 
         Cocktail cocktailtmp = new Cocktail();
-        cocktailtmp.setId(cocktail.getId());
         cocktailtmp.setDifficulte(cocktail.getDifficulte());
         cocktailtmp.setIngredients(cocktail.getIngredients());
         cocktailtmp.setNom(cocktail.getNom());
         cocktails.add(cocktailtmp);
-        return cocktailtmp;
+        return cocktails;
 
     }
 
-    public String delete(int id) {
+    public List<Cocktail> delete(int id) {
         cocktails.removeIf(cocktail -> cocktail.getId() == id);
-        return null;
+        return cocktails;
 
     }
 
-    public Cocktail update(Cocktail cocktail){
+    public Cocktail update(int id, Cocktail cocktail){
         Cocktail tmp = null;
+
         for(int i = 0; i < cocktails.size(); i++) {
-
             Cocktail c = cocktails.get(i);
+            if (c.getId() == id) {
 
-            if (c.getId() == cocktail.getId()) {
-                cocktails.set(i, cocktail);
-                 tmp= cocktails.get(i);
+                cocktails.get(i).setDifficulte(cocktail.getDifficulte());
+                cocktails.get(i).setIngredients(cocktail.getIngredients());
+                cocktails.get(i).setNom(cocktail.getNom());
+                tmp = cocktails.get(i);
+
             }
         }
 
@@ -77,5 +78,32 @@ public class CocktailDAO implements ICocktailDAO {
         }
         return null;
     }
+
+    @Override
+    public List<Cocktail> create(){
+
+        ArrayList<String> ingredients = new ArrayList<>();
+        ingredients.add("rhum blanc");
+        ingredients.add("rhum ambré");
+        ingredients.add("jus d'ananas");
+        ingredients.add("lait de coco");
+
+        cocktails.add(new Cocktail(ingredients, "pina colada", 2));
+
+       ingredients.clear();
+       ingredients.add("cointreau");
+       ingredients.add("champagne");
+       ingredients.add( "citron vert");
+       ingredients.add("sucre de cane");
+
+       cocktails.add(new Cocktail(ingredients, "soupe de champagne", 2));
+
+
+
+       return cocktails;
+
+    }
+
+
 
 }
